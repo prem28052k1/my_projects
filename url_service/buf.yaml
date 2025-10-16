@@ -2,8 +2,8 @@ version: v1
 deps:
   - buf.build/googleapis/googleapis
 breaking:
-    use:
-      - FILE
+  use:
+    - FILE
 lint:
-    use:
-      - DEFAULT
+  use:
+    - DEFAULT
