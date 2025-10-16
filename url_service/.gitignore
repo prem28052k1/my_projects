@@ -1,0 +1,40 @@
+# Binaries
+url-shortener
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace file
+go.work
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test coverage
+*.coverprofile
+coverage.html
+
+# Docker
+docker-compose.override.yml
+
+# Temporary files
+tmp/
+temp/

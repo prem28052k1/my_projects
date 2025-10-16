@@ -1,0 +1,68 @@
+syntax = "proto3" ;
+
+package url_service ;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/my_projects/url_service/gen";
+
+service UrlService {
+    rpc Shorten (ShortenUrlRequest) returns (ShortenUrlResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/shorten"
+            body: "*"
+        };
+    }
+    rpc Expand (ExpandUrlRequest) returns (ExpandUrlResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/expand/{short_url}"
+        };
+    }
+    rpc ListUrls (ListUrlsRequest) returns (ListUrlsResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/urls"
+        };
+    }
+}
+
+message ShortenUrlRequest {
+   string url = 1 ;
+}
+
+message ShortenUrlResponse {
+   string url_id = 1 ;
+   string short_url = 2 ;
+}
+
+message ExpandUrlRequest {
+   string short_url = 1 ;
+}
+
+message ExpandUrlResponse {
+   string original_url = 1 ;
+   int64 click_count = 2 ;
+   string created_at = 3 ;
+}
+
+message ListUrlsRequest {
+   int32 page = 1 ;
+   int32 page_size = 2 ;
+}
+
+message ListUrlsResponse {
+   repeated UrlInfo urls = 1 ;
+   int64 total_count = 2 ;
+   int32 page = 3 ;
+   int32 page_size = 4 ;
+}
+
+message UrlInfo {
+   string url_id = 1 ;
+   string original_url = 2 ;
+   string short_url = 3 ;
+   int64 click_count = 4 ;
+   string created_at = 5 ;
+   string last_accessed_at = 6 ;
+}
+
+
